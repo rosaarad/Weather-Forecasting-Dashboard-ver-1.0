@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import seaborn as sns
 from matplotlib import pyplot as plt
 import plotly.express as px
 
@@ -22,14 +21,15 @@ tab1, tab2, tab3 = st.tabs(["Current Weather", "Weather Forecast", "Air Pollutio
 
 with tab1:
     st.subheader('Current Weather', divider='rainbow')
-
+    st.write(current_weather)
+    
     if st.checkbox("search"):
         selected_weathers = st.multiselect("Select weathers:", current_weather["weather"].unique())
         data_multiweather = current_weather.loc[current_weather["weather"].apply(lambda w: w in selected_weathers)]
         st.write(f"Filtered data: ")
         st.write(data_multiweather)
 
-    st.write(current_weather)
+
 
 with tab2:
     st.subheader('Weather Forecast', divider='rainbow')
